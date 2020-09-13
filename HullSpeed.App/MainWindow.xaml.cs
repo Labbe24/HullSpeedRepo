@@ -19,8 +19,8 @@ namespace HullSpeed.App
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {
-        private Sailboat boat1 = null;
+    { 
+        Sailboat boat1;
         public MainWindow()
         {
             InitializeComponent();
@@ -28,6 +28,7 @@ namespace HullSpeed.App
             boat1 = new Sailboat();
 
             Loaded += new RoutedEventHandler(MainWindow_Loaded);
+            KeyDown += new KeyEventHandler(MainWindow_KeyDown);
 
         }
 
@@ -49,6 +50,32 @@ namespace HullSpeed.App
         private void calcHullspeedBtn_Click(object sender, RoutedEventArgs e)
         {
             TxtHullspeed.Text = boat1.Hullspeed().ToString("F1");
+        }
+
+        private void MainWindow_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.Key)
+            {
+                case Key.L:
+                {
+                    if (Keyboard.Modifiers == ModifierKeys.Control)
+                    {
+                        FontSize += 2;
+                        e.Handled = true;
+                    }
+                    break;
+                    }
+
+                case Key.S:
+                {
+                    if ((Keyboard.Modifiers == ModifierKeys.Control) && FontSize>=6)
+                    {
+                        FontSize -= 2;
+                        e.Handled = true;
+                    }
+                    break;
+                }
+            }
         }
     }
 }

@@ -5,23 +5,56 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HullSpeed.App"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <DockPanel>
-        <WrapPanel Margin="10" MaxWidth="193">
-            <Label Content="_Name:" Target="{Binding ElementName=TxtName}"/>
-            <TextBox Name="TxtName" MaxWidth="150" MinWidth="100" MaxHeight="20" MinHeight="10" HorizontalAlignment="Left" TextChanged="NameTextChanged"/>
-            <Label Content="_Length:" Target="{Binding ElementName=TxtLength}"/>
-            <TextBox Name="TxtLength" MaxWidth="150" MinWidth="70" MaxHeight="20" MinHeight="10" HorizontalContentAlignment="Left" TextChanged="LengthTextChanged"/>
-            <Label Content ="feet" Target="{Binding ElementName=TxtLength}"/>
-            <Button Content="Calculate Hull Speed" HorizontalAlignment="Center" Margin="20" Click="calcHullspeedBtn_Click"/>
-            <Label Content="Hull speed:" Target="{Binding ElementName=TxtBlock}"></Label>
-            <TextBox x:Name="TxtHullspeed" BorderBrush="Snow" RenderTransformOrigin="0.537,0.757" Height="18"/>
-            <Label Content="knots" Target="{Binding ElementName=TxtBlock}"/>
-        </WrapPanel>
-        <DockPanel>
-            <Viewbox HorizontalAlignment="Right">
-                <Image Source="Sailboat.jpg" MaxHeight="450" MaxWidth="250" HorizontalAlignment="Right" Margin="10, 10"/>
-            </Viewbox>
+        Title="MainWindow" Height="450" Width="800" KeyDown="MainWindow_KeyDown">
+    <StackPanel Orientation="Horizontal">
+        <StackPanel HorizontalAlignment="Left">
+            <WrapPanel Margin="10" MinWidth="100" MaxHeight="24" VerticalAlignment="Top">
+                <Label Content="_Name:" 
+                    Target="{Binding ElementName=TxtName}"/>
+                <TextBox 
+                    Name="TxtName"
+                    TextChanged="NameTextChanged"
+                    MinWidth="200"/>
+            </WrapPanel>
+            <WrapPanel Margin="10" MinWidth="200" MaxHeight="24">
+                <Label Content="_Length:" 
+                    Target="{Binding ElementName=TxtLength}"/>
+                <TextBox 
+                    Name="TxtLength" 
+                    TextChanged="LengthTextChanged"
+                    MinWidth="200"/>
+                <Label 
+                    Content ="feet" 
+                    Target="{Binding ElementName=TxtLength}"/>
+            </WrapPanel>
+            <WrapPanel>
+                <Button 
+                    Content="Calculate Hull Speed" 
+                    Margin="20" 
+                    Click="calcHullspeedBtn_Click"/>
+                <Label 
+                    Content="Hull speed:"
+                    VerticalAlignment="Center"
+                    Target="{Binding ElementName=TxtHullspeed}"></Label>
+                <TextBox 
+                    x:Name="TxtHullspeed" 
+                    BorderBrush="Snow" 
+                    RenderTransformOrigin="0.537,0.757"
+                    Margin="7.5"
+                    Height="18"/>
+                <Label 
+                    Content="knots"
+                    VerticalAlignment="Center"
+                    Target="{Binding ElementName=TxtHullspeed}"/>
+            </WrapPanel>
+        </StackPanel>
+        <DockPanel HorizontalAlignment="Right">
+                <Viewbox HorizontalAlignment="Right">
+                    <Image 
+                        Source="Sailboat.jpg" 
+                        HorizontalAlignment="Right" 
+                        Margin="10, 10"/>
+                </Viewbox>
         </DockPanel>
-    </DockPanel>
+    </StackPanel>
 </Window>
