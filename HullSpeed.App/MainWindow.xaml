@@ -27,7 +27,7 @@
                     Content ="feet" 
                     Target="{Binding ElementName=TxtLength}"/>
             </WrapPanel>
-            <WrapPanel>
+            <WrapPanel Background="Transparent">
                 <Button 
                     Content="Calculate Hull Speed" 
                     Margin="20" 
